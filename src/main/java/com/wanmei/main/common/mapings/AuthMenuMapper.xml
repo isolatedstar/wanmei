@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wanmei.main.common.dao.AuthMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.wanmei.main.common.model.AuthMenu" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="CODE" property="code" jdbcType="VARCHAR" />
+    <result column="ENABLE" property="enable" jdbcType="INTEGER" />
+    <result column="MENU_NAME" property="menuName" jdbcType="VARCHAR" />
+    <result column="SYS_CODE" property="sysCode" jdbcType="VARCHAR" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="PARENT_ID" property="parentId" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CODE, ENABLE, MENU_NAME, SYS_CODE, URL, PARENT_ID, TYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from auth_menu
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from auth_menu
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wanmei.main.common.model.AuthMenu" >
+    insert into auth_menu (ID, CODE, ENABLE, 
+      MENU_NAME, SYS_CODE, URL, 
+      PARENT_ID, TYPE)
+    values (#{id,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{enable,jdbcType=INTEGER}, 
+      #{menuName,jdbcType=VARCHAR}, #{sysCode,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wanmei.main.common.model.AuthMenu" >
+    insert into auth_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="code != null" >
+        CODE,
+      </if>
+      <if test="enable != null" >
+        ENABLE,
+      </if>
+      <if test="menuName != null" >
+        MENU_NAME,
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null" >
+        #{enable,jdbcType=INTEGER},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCode != null" >
+        #{sysCode,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wanmei.main.common.model.AuthMenu" >
+    update auth_menu
+    <set >
+      <if test="code != null" >
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null" >
+        ENABLE = #{enable,jdbcType=INTEGER},
+      </if>
+      <if test="menuName != null" >
+        MENU_NAME = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE = #{sysCode,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wanmei.main.common.model.AuthMenu" >
+    update auth_menu
+    set CODE = #{code,jdbcType=VARCHAR},
+      ENABLE = #{enable,jdbcType=INTEGER},
+      MENU_NAME = #{menuName,jdbcType=VARCHAR},
+      SYS_CODE = #{sysCode,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=VARCHAR},
+      PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selecAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from auth_menu
+  </select>
+  
+  <select id="selecByUserRoles" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    SELECT DISTINCT
+	    	 me.ID,
+			 me.`CODE`,
+			 me.`ENABLE`,
+			 me.MENU_NAME,
+			 me.SYS_CODE,
+			 me.URL,
+			 me.PARENT_ID,
+			 me.TYPE
+		FROM auth_menu me 
+		JOIN auth_role_menu rome ON me.ID = rome.MENU_ID
+		JOIN auth_role      ro   ON ro.ID = rome.ROLE_ID
+	<where>
+		<if test="roleStr !='' " >
+			ro.ROLE_SECURITY IN( ${roleStr} )
+		</if>
+		<if test="roleStr == ''">
+			1 != 1
+		</if>
+	</where>
+  </select>
+  
+</mapper>

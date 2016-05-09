@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wanmei.main.common.dao.AuthRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.wanmei.main.common.model.AuthRole" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="DESRIPTION" property="desription" jdbcType="VARCHAR" />
+    <result column="ENABLE" property="enable" jdbcType="INTEGER" />
+    <result column="FLAG" property="flag" jdbcType="INTEGER" />
+    <result column="ROLE_NAME" property="roleName" jdbcType="VARCHAR" />
+    <result column="ROLE_SECURITY" property="roleSecurity" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, DESRIPTION, ENABLE, FLAG, ROLE_NAME, ROLE_SECURITY, TYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from auth_role
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from auth_role
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wanmei.main.common.model.AuthRole" >
+    insert into auth_role (ID, DESRIPTION, ENABLE, 
+      FLAG, ROLE_NAME, ROLE_SECURITY, 
+      TYPE)
+    values (#{id,jdbcType=VARCHAR}, #{desription,jdbcType=VARCHAR}, #{enable,jdbcType=INTEGER}, 
+      #{flag,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{roleSecurity,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wanmei.main.common.model.AuthRole" >
+    insert into auth_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="desription != null" >
+        DESRIPTION,
+      </if>
+      <if test="enable != null" >
+        ENABLE,
+      </if>
+      <if test="flag != null" >
+        FLAG,
+      </if>
+      <if test="roleName != null" >
+        ROLE_NAME,
+      </if>
+      <if test="roleSecurity != null" >
+        ROLE_SECURITY,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="desription != null" >
+        #{desription,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null" >
+        #{enable,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleSecurity != null" >
+        #{roleSecurity,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wanmei.main.common.model.AuthRole" >
+    update auth_role
+    <set >
+      <if test="desription != null" >
+        DESRIPTION = #{desription,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null" >
+        ENABLE = #{enable,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        FLAG = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null" >
+        ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleSecurity != null" >
+        ROLE_SECURITY = #{roleSecurity,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wanmei.main.common.model.AuthRole" >
+    update auth_role
+    set DESRIPTION = #{desription,jdbcType=VARCHAR},
+      ENABLE = #{enable,jdbcType=INTEGER},
+      FLAG = #{flag,jdbcType=INTEGER},
+      ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+      ROLE_SECURITY = #{roleSecurity,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectByResourceId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  	  SELECT ro.* FROM auth_role ro JOIN auth_role_resource rore ON ro.ID = rore.ROLE_ID WHERE rore.RESOURCE_ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  	  SELECT ro.* FROM auth_role ro JOIN auth_user_role us ON ro.ID = us.ROLE_ID WHERE us.USER_ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+   <resultMap type="com.wanmei.main.common.model.model_extend.RoleExtendBean" id="reMap" extends="BaseResultMap">
+  	<collection property="resources" javaType="list" ofType="com.wanmei.main.common.model.AuthResource">
+  		<id property="id" column="RESOURCE_ID"/>
+  		<result property="name" column="NAME" jdbcType="VARCHAR"/>
+  		<result property="url" column="URL" jdbcType="VARCHAR"/>
+  		<result property="menuId" column="MENU_ID" jdbcType="VARCHAR"/>
+  		<result property="enable" column="RE_ENABLE" jdbcType="VARCHAR"/>
+  	</collection>
+  </resultMap>
+  <select id="selectAllRoleAndResource" resultMap="reMap">
+  
+  	SELECT
+		ro.ID,
+		ro.DESRIPTION,
+		ro.`ENABLE`,
+		ro.FLAG,
+		ro.ROLE_NAME,
+		ro.ROLE_SECURITY,
+		ro.TYPE,
+		re.ID RESOURCE_ID,
+		re.`NAME`,
+		re.URL,
+		re.MENU_ID,
+		re.`ENABLE` RE_ENABLE
+		FROM auth_role ro
+		JOIN auth_role_resource rore  ON ro.ID = rore.ROLE_ID
+		JOIN auth_resource      re    ON re.ID = rore.RESOURCE_ID
+  </select>
+  
+</mapper>
