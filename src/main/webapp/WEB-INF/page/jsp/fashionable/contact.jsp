@@ -32,12 +32,25 @@
     <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js" type="text/javascript"></script> <!-- form validation -->
 	<script src="${pageContext.request.contextPath}/js/jquery.tweet.js" type="text/javascript"></script> <!-- Twitter widget -->
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script> <!-- Google maps -->
-    <script src="${pageContext.request.contextPath}/js/jquery.gmap.min.js" type="text/javascript"></script> <!-- gMap -->
 	<script src="${pageContext.request.contextPath}/js/jquery.touchSwipe.min.js" type="text/javascript"></script> <!-- touchSwipe -->
     <script src="${pageContext.request.contextPath}/js/custom.js" type="text/javascript"></script> <!-- jQuery initialization -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=kDgEqtNiazWcP2yehyzNqlvGGUxB33kK"></script>
     <!-- end JS -->
-    
 	<title>Finesse - Contact</title>
+	
+	<script type="text/javascript">
+	
+		$(function(){
+		    // 百度地图API功能
+			var map = new BMap.Map("map");            // 创建Map实例
+			map.centerAndZoom(new BMap.Point(107.970223, 26.573502), 20);
+			var local = new BMap.LocalSearch(map, {
+			  	renderOptions:{map: map, autoViewport:false}
+			});
+			map.enableScrollWheelZoom(true);
+			local.search("凯里丰球黔城43栋");
+		})
+	</script>
 </head>
 
 <body>
@@ -51,7 +64,7 @@
         <section id="content" class="container clearfix">
         	<!-- begin page header -->
             <header id="page-header">
-            	<h1 id="page-title">Contact</h1>	
+            	<h1 id="page-title"></h1>	
             </header>
             <!-- end page header -->
         	
@@ -64,6 +77,7 @@
                     data-zoom="17"
                     style="width: 100%; height: 400px;">
                 </div>
+                <div id="allmap"></div>
             </section>
             <!-- end google map -->
             
@@ -132,81 +146,7 @@
         <!-- end content -->             
     
 	<!-- begin footer -->
-	<footer id="footer">
-    	<div class="container">
-            <!-- begin footer top -->
-            <div id="footer-top">
-                <div class="one-fourth">
-                	<div class="widget">
-                        <h3>About Us</h3>
-                        <p>Finesse is a responsive business and portfolio theme carefully handcrafted using the latest technologies.</p>
-                        <p>It features a clean design, as well as extended functionality that will come in very handy.</p>
-                    </div>
-                </div>
-                <div class="one-fourth">
-                	<div class="widget latest-posts">
-                        <h3>Latest Posts</h3>
-                        <ul>
-                            <li>
-                                <a href="blog-post.html">How to Make Innovative Ideas Happen</a>
-                                <span>March 10, 2012</span>
-                            </li>
-                            <li> <a href="blog-post.html">Web Development for the iPhone and iPad</a>
-                                <span>March 10, 2012</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="one-fourth">
-                	<div class="widget twitter-widget">
-                    	<h3>Latest Tweets</h3>
-                        <div class="tweet"></div>
-                    </div>
-                </div>
-                <div class="one-fourth column-last">
-                	<div class="widget contact-info">
-                    	<h3>Contact Info</h3>
-                        <p class="address"><strong>Address:</strong> 123 Street, City, Country</p>
-                        <p class="phone"><strong>Phone:</strong> (123) 456-7890</p>
-                        <p class="email"><strong>Email:</strong> <a href="mailto:info@finesse.com">info@finesse.com</a></p>
-                        <div class="social-links">
-                        	<h4>Follow Us</h4>
-                            <ul>
-                            	<li class="twitter"><a href="#" title="Twitter" target="_blank">Twitter</a></li>
-                                <li class="facebook"><a href="#" title="Facebook" target="_blank">Facebook</a></li>
-                                <li class="google"><a href="#" title="Google+" target="_blank">Google+</a></li>
-                                <li class="youtube"><a href="#" title="YouTube" target="_blank">YouTube</a></li>
-                                <li class="skype"><a href="#" title="Skype" target="_blank">Skype</a></li>
-                                <li class="rss"><a href="#" title="RSS" target="_blank">RSS</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end footer top -->	
-            
-            <!-- begin footer bottom -->
-            <div id="footer-bottom">
-            	<div class="one-half">
-                	<p>Copyright &copy; 2012 Finesse. Collect from <a href="http://www.17sucai.com/" title="网页模板" target="_blank">网页模板</a> - More Templates <a href="http://www.17sucai.com/" target="_blank" title="模板之家">模板之家</a></p>
-                </div>
-                
-                <div class="one-half column-last">
-                	<nav id="footer-nav">
-                        <ul>
-                            <li><a href="index.html">Home</a> &middot;</li>
-                            <li><a href="about-us.html">Templates</a> &middot;</li>
-                            <li><a href="elements.html">Features</a> &middot;</li>
-                            <li><a href="portfolio.html">Portfolio</a> &middot;</li>
-                            <li><a href="blog.html">Blog</a> &middot;</li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!-- end footer bottom -->	
-        </div>
-	</footer>
+	<jsp:include page="footer.jsp"></jsp:include>
 	<!-- end footer -->
 </div>
 <!-- end container -->

@@ -8,34 +8,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<!-- end meta -->
 	<title>页眉</title>
-	<script type="text/javascript">
-		$(function(){
-			var current = "${current}";
-			switch (current) {
-			case "1":
-				$("#navigation_li_home").attr("class","current");
-				break;
-			case "2":
-				$("#navigation_li_aboutus").attr("class","current");
-				break;
-			case "3":
-				$("#navigation_li_features").attr("class","current");
-				break;
-			case "4":
-				$("#navigation_li_portfolio").attr("class","current");
-				break;
-			case "5":
-				$("#navigation_li_blog").attr("class","current");
-				break;
-			case "6":
-				$("#navigation_li_contacts").attr("class","current");
-				break;
-			default:
-				$("#navigation_li_home").attr("class","current");
-				break;
-			}
-		});
-	</script>
 </head>
 <body>
 <!-- begin header -->
@@ -67,13 +39,13 @@
             <!-- begin navigation -->
             <nav id="nav">
                 <ul id="navlist" class="clearfix">
-                    <li id="navigation_li_home"><a href="${pageContext.request.contextPath}/officialWebsiteController/toIndex.do" rel="submenu1">首页</a>
+                    <li class="current"><a href="${pageContext.request.contextPath}/officialWebsiteController/toIndex.do" rel="submenu1">首页</a>
                         <ul id="submenu1" class="ddsubmenustyle">
                         	<li><a href="${pageContext.request.contextPath}/officialWebsiteController/toIndex.do">Home Version 1</a></li>
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toIndex_2.do">Home Version 2</a></li>
                         </ul>
                     </li>
-                    <li id="navigation_li_features"><a href="${pageContext.request.contextPath}/officialWebsiteController/toElements.do" rel="submenu3">产品特色</a>
+                    <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toElements.do" rel="submenu3">Features</a>
                         <ul id="submenu3" class="ddsubmenustyle">
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toElements.do">Elements</a></li>
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toGridColumns.do">Grid Columns</a></li>
@@ -82,7 +54,7 @@
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toVideo.do">Video</a></li>
                         </ul>
                     </li>
-                    <li id="navigation_li_portfolio"><a href="${pageContext.request.contextPath}/officialWebsiteController/toPortfolio.do" rel="submenu4">设计样例</a>
+                    <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toPortfolio.do" rel="submenu4">设计样例</a>
                         <ul id="submenu4" class="ddsubmenustyle">
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toPortfolio.do">Portfolio Overview</a></li>
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toPortfolioItemSlider.do">Portfolio Item &ndash; Slider</a></li>
@@ -91,13 +63,13 @@
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toPortfolioItemSelfHostedVideo.do">Portfolio Item &ndash; Self-Hosted Video</a></li>
                         </ul>
                     </li>
-                    <li id="navigation_li_blog"><a href="${pageContext.request.contextPath}/officialWebsiteController/toBlog.do" rel="submenu5">博客</a>
+                    <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toBlog.do" rel="submenu5">博客</a>
                         <ul id="submenu5" class="ddsubmenustyle">
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toBlog.do">Blog Overview</a></li>
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toBlogPost.do">Blog Post</a></li>
                         </ul>
                     </li>
-                    <li id="navigation_li_aboutus"><a href="${pageContext.request.contextPath}/officialWebsiteController/toAbout.do" rel="submenu2">关于我们</a>
+                    <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toAbout.do" rel="submenu2">关于我们</a>
                         <ul id="submenu2" class="ddsubmenustyle">
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toAbout.do">About Us</a></li>
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toServices.do">Services</a></li>
@@ -123,7 +95,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li id="navigation_li_contacts"><a href="${pageContext.request.contextPath}/officialWebsiteController/toContact.do">联系我们</a></li>
+                    <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toContact.do">联系我们</a></li>
                 </ul>
             </nav>
             <!-- end navigation -->

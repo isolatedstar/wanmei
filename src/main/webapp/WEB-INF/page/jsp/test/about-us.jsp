@@ -5,12 +5,16 @@
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
 	<!-- begin meta -->
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="description" content="Finesse is a responsive business and portfolio theme carefully handcrafted using the latest technologies. It features a clean design, as well as extended functionality that will come in very handy.">
+	<meta name="keywords" content="Finesse, responsive business portfolio theme, HTML5, CSS3, clean design">
+	<meta name="author" content="Ixtendo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- end meta -->
 	
 	<!-- begin CSS -->
 	<link href="${pageContext.request.contextPath}/style.css" type="text/css" rel="stylesheet" id="main-style">
-	<!--[if IE]> <link href="${pageContext.request.contextPath}/css/ie.css" type="text/css" rel="stylesheet"> <![endif]-->
+	<!--[if IE]> <link href="css/ie.css" type="text/css" rel="stylesheet"> <![endif]-->
 	<link href="${pageContext.request.contextPath}/css/colors/orange.css" type="text/css" rel="stylesheet" id="color-style">
     <!-- end CSS -->
 	
@@ -69,37 +73,13 @@
             <!-- begin navigation -->
             <nav id="nav">
                 <ul id="navlist" class="clearfix">
-                    <li class="current"><a href="${pageContext.request.contextPath}/officialWebsiteController/toIndex.do" rel="submenu1">首页</a>
+                    <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toIndex.do" rel="submenu1">首页</a>
                         <ul id="submenu1" class="ddsubmenustyle">
-                        	<li><a href="${pageContext.request.contextPath}/officialWebsiteController/toIndex.do">Home Version 1</a></li>
+                            <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toIndex.do">Home Version 1</a></li>
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toIndex_2.do">Home Version 2</a></li>
                         </ul>
                     </li>
-                    <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toElements.do" rel="submenu3">Features</a>
-                        <ul id="submenu3" class="ddsubmenustyle">
-                            <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toElements.do">Elements</a></li>
-                            <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toGridColumns.do">Grid Columns</a></li>
-                            <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toPricingTables.do">Pricing Tables</a></li>
-                            <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toImages.do">Images</a></li>
-                            <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toVideo.do">Video</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toPortfolio.do" rel="submenu4">设计样例</a>
-                        <ul id="submenu4" class="ddsubmenustyle">
-                            <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toPortfolio.do">Portfolio Overview</a></li>
-                            <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toPortfolioItemSlider.do">Portfolio Item &ndash; Slider</a></li>
-                            <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toPortfolioItemImage.do">Portfolio Item &ndash; Image</a></li>
-                            <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toPortfolioItemEmbeddedVideo.do">Portfolio Item &ndash; Embedded Video</a></li>
-                            <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toPortfolioItemSelfHostedVideo.do">Portfolio Item &ndash; Self-Hosted Video</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toBlog.do" rel="submenu5">博客</a>
-                        <ul id="submenu5" class="ddsubmenustyle">
-                            <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toBlog.do">Blog Overview</a></li>
-                            <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toBlogPost.do">Blog Post</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toAbout.do" rel="submenu2">关于我们</a>
+                    <li class="current"><a href="${pageContext.request.contextPath}/officialWebsiteController/toAbout.do" rel="submenu2">关于我们</a>
                         <ul id="submenu2" class="ddsubmenustyle">
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toAbout.do">About Us</a></li>
                             <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toServices.do">Services</a></li>
@@ -125,13 +105,37 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="${pageContext.request.contextPath}/officialWebsiteController/toContact.do">联系我们</a></li>
+                    <li><a href="elements.html" rel="submenu3">Features</a>
+                            <ul id="submenu3" class="ddsubmenustyle">
+                            <li><a href="elements.html">Elements</a></li>
+                            <li><a href="grid-columns.html">Grid Columns</a></li>
+                            <li><a href="pricing-tables.html">Pricing Tables</a></li>
+                            <li><a href="images.html">Images</a></li>
+                            <li><a href="video.html">Video</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="portfolio.html" rel="submenu4">Portfolio</a>
+                            <ul id="submenu4" class="ddsubmenustyle">
+                            <li><a href="portfolio.html">Portfolio Overview</a></li>
+                            <li><a href="portfolio-item-slider.html">Portfolio Item &ndash; Slider</a></li>
+                            <li><a href="portfolio-item-image.html">Portfolio Item &ndash; Image</a></li>
+                            <li><a href="portfolio-item-embedded-video.html">Portfolio Item &ndash; Embedded Video</a></li>
+                            <li><a href="portfolio-item-self-hosted-video.html">Portfolio Item &ndash; Self-Hosted Video</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="blog.html" rel="submenu5">Blog</a>
+                            <ul id="submenu5" class="ddsubmenustyle">
+                            <li><a href="blog.html">Blog Overview</a></li>
+                            <li><a href="blog-post.html">Blog Post</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
             <!-- end navigation -->
             
             <!-- begin search form -->
-            <form id="search-form" action="${pageContext.request.contextPath}/officialWebsiteController/search.do" method="get">
+            <form id="search-form" action="search.php" method="get">
                 <input id="s" type="text" name="s" placeholder="Search &hellip;" style="display: none;">
                 <input id="search-submit" type="submit" name="search-submit" value="Search">
             </form>
@@ -327,7 +331,81 @@
     <!-- end content -->           
     
 	<!-- begin footer -->
-	<jsp:include page="footer.jsp"></jsp:include>
+	<footer id="footer">
+    	<div class="container">
+            <!-- begin footer top -->
+            <div id="footer-top">
+                <div class="one-fourth">
+                	<div class="widget">
+                        <h3>About Us</h3>
+                        <p>Finesse is a responsive business and portfolio theme carefully handcrafted using the latest technologies.</p>
+                        <p>It features a clean design, as well as extended functionality that will come in very handy.</p>
+                    </div>
+                </div>
+                <div class="one-fourth">
+                	<div class="widget latest-posts">
+                        <h3>Latest Posts</h3>
+                        <ul>
+                            <li>
+                                <a href="blog-post.html">How to Make Innovative Ideas Happen</a>
+                                <span>March 10, 2012</span>
+                            </li>
+                            <li> <a href="blog-post.html">Web Development for the iPhone and iPad</a>
+                                <span>March 10, 2012</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="one-fourth">
+                	<div class="widget twitter-widget">
+                    	<h3>Latest Tweets</h3>
+                        <div class="tweet"></div>
+                    </div>
+                </div>
+                <div class="one-fourth column-last">
+                	<div class="widget contact-info">
+                    	<h3>Contact Info</h3>
+                        <p class="address"><strong>Address:</strong> 123 Street, City, Country</p>
+                        <p class="phone"><strong>Phone:</strong> (123) 456-7890</p>
+                        <p class="email"><strong>Email:</strong> <a href="mailto:info@finesse.com">info@finesse.com</a></p>
+                        <div class="social-links">
+                        	<h4>Follow Us</h4>
+                            <ul>
+                            	<li class="twitter"><a href="#" title="Twitter" target="_blank">Twitter</a></li>
+                                <li class="facebook"><a href="#" title="Facebook" target="_blank">Facebook</a></li>
+                                <li class="google"><a href="#" title="Google+" target="_blank">Google+</a></li>
+                                <li class="youtube"><a href="#" title="YouTube" target="_blank">YouTube</a></li>
+                                <li class="skype"><a href="#" title="Skype" target="_blank">Skype</a></li>
+                                <li class="rss"><a href="#" title="RSS" target="_blank">RSS</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end footer top -->	
+            
+            <!-- begin footer bottom -->
+            <div id="footer-bottom">
+            	<div class="one-half">
+                	<p>Copyright &copy; 2012 Finesse. Collect from <a href="http://www.17sucai.com/" title="网页模板" target="_blank">网页模板</a> - More Templates <a href="http://www.17sucai.com/" target="_blank" title="模板之家">模板之家</a></p>
+                </div>
+                
+                <div class="one-half column-last">
+                	<nav id="footer-nav">
+                        <ul>
+                            <li><a href="index.html">Home</a> &middot;</li>
+                            <li><a href="about-us.html">Templates</a> &middot;</li>
+                            <li><a href="elements.html">Features</a> &middot;</li>
+                            <li><a href="portfolio.html">Portfolio</a> &middot;</li>
+                            <li><a href="blog.html">Blog</a> &middot;</li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- end footer bottom -->	
+        </div>
+	</footer>
 	<!-- end footer -->
 </div>
 <!-- end container -->
